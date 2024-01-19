@@ -3,11 +3,12 @@ from KlassArrayQ import ArrayQ
 def skapa_ordningen():
     q = ArrayQ()
 
-    q.enqueue(3)
-    q.enqueue(1)
-    q.enqueue(4)
-    q.enqueue(2)
-    q.enqueue(5)
+    temp = input("Vilka siffror:").split(",")
+    q.enqueue(int(temp[0]))
+    q.enqueue(int(temp[1]))
+    q.enqueue(int(temp[2]))
+    q.enqueue(int(temp[3]))
+    q.enqueue(int(temp[4]))
     return q
 
 def sortera_kort(kort_hög):
