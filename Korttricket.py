@@ -1,48 +1,33 @@
-from KlassArrayQ import ArrayQ
+from linkedQFile import *
+
+import sys
 
 def skapa_ordningen():
-    q = ArrayQ()
+    q = LinkedQ()
 
-    temp = input("Vilka siffror:").split(",")
-    q.enqueue(int(temp[0]))
-    q.enqueue(int(temp[1]))
-    q.enqueue(int(temp[2]))
-    q.enqueue(int(temp[3]))
-    q.enqueue(int(temp[4]))
+    temp = sys.stdin.readline()
+
+    indata = input("Vilka siffror:").split(" ")
+    
+    for i in range(len(temp)):
+        q.enqueue((temp[i]))
     return q
 
 def sortera_kort(kort_hög):
     lista = []
-    temp = (kort_hög.dequeue())
-    kort_hög.enqueue(temp)
-    lista.append(kort_hög.dequeue())
-
-    temp = (kort_hög.dequeue())
-    kort_hög.enqueue(temp)
-    lista.append(kort_hög.dequeue())
-
-    temp = (kort_hög.dequeue())
-    kort_hög.enqueue(temp)
-    lista.append(kort_hög.dequeue())
-
-    temp = (kort_hög.dequeue())
-    kort_hög.enqueue(temp)
-    lista.append(kort_hög.dequeue())
-
-    temp = (kort_hög.dequeue())
-    kort_hög.enqueue(temp)
-    lista.append(kort_hög.dequeue())
+    for i in range(kort_hög.size()):
+        temp = (kort_hög.dequeue())
+        kort_hög.enqueue(temp)
+        lista.append(kort_hög.dequeue())
 
     return lista
 
 def sorterat_rätt(sorterat):
-    print(sorterat)
-
+    for i in range(len(sorterat)):
+        print(str(sorterat[i]) + " ", end="")
 
 def main():
-    j = skapa_ordningen()
-    k = sortera_kort(j)
-    sorterat_rätt(k)
+    sorterat_rätt(sortera_kort(skapa_ordningen()))
 
 main()
     
